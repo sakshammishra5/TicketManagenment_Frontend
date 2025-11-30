@@ -1,0 +1,233 @@
+/* overall positioning */
+.chat-widget-launcher {
+  position: fixed;
+  right: 28px;
+  bottom: 28px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: #33475b;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+/* small welcome popup above launcher */
+.chat-widget-welcome {
+  position: fixed;
+  right: 24px;
+  bottom: 100px;
+  max-width: 280px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  padding: 14px 16px 14px 16px;
+  z-index: 9998;
+}
+
+.chat-widget-welcome-text {
+  margin: 8px 0 0;
+  font-size: 14px;
+  color: #33475b;
+  line-height: 1.4;
+}
+
+.chat-widget-welcome-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.chat-widget-avatar-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffb454;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-widget-avatar-emoji {
+  font-size: 22px;
+}
+
+/* full chat window */
+.chat-widget-window {
+  position: fixed;
+  right: 20px;
+  bottom: 96px;
+  width: 360px;
+  max-height: 520px;
+  background: #ffffff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* header */
+.chat-widget-header {
+  background: #33475b;
+  color: #ffffff;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.chat-widget-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-widget-header-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.header-avatar {
+  border: 2px solid #ffffff;
+}
+
+.chat-widget-header-close {
+  border: none;
+  background: transparent;
+  color: #ffffff;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* body */
+.chat-widget-body {
+  padding: 12px 14px;
+  flex: 1;
+  overflow-y: auto;
+  background: #f5f5f5;
+}
+
+/* bubbles */
+.chat-widget-bubble.bot {
+  display: inline-block;
+  background: #ffffff;
+  padding: 8px 12px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+/* intro form card */
+.chat-widget-intro-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+.chat-widget-intro-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.chat-widget-label {
+  display: block;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+}
+
+.chat-widget-input,
+.chat-widget-textarea {
+  width: 100%;
+  margin-top: 4px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+  padding: 6px 0;
+  font-size: 13px;
+  outline: none;
+  background: transparent;
+}
+
+.chat-widget-textarea {
+  resize: none;
+  min-height: 40px;
+  border-radius: 0;
+}
+
+.chat-widget-submit {
+  margin-top: 14px;
+  width: 100%;
+  border: none;
+  background: #0b3c75;
+  color: #ffffff;
+  padding: 9px 0;
+  border-radius: 22px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.chat-widget-submit:disabled {
+  opacity: 0.8;
+  cursor: default;
+}
+
+/* footer */
+.chat-widget-footer {
+  padding: 10px 12px;
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-widget-footer-input {
+  flex: 1;
+  border-radius: 16px;
+  border: 1px solid #d1d5db;
+  padding: 8px 10px;
+  font-size: 13px;
+  outline: none;
+}
+
+.chat-widget-footer-send {
+  border-radius: 50%;
+  border: none;
+  width: 30px;
+  height: 30px;
+  font-size: 14px;
+  cursor: pointer;
+  background: #e5e7eb;
+}
+
+/* simple responsive tweak */
+@media (max-width: 480px) {
+  .chat-widget-window {
+    width: 100%;
+    right: 0;
+    bottom: 0;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .chat-widget-launcher {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .chat-widget-welcome {
+    right: 12px;
+    left: 12px;
+  }
+}

@@ -1,0 +1,74 @@
+{
+    assignedTo: { _id: '6925d2363e3bb5a2d849fdc0', firstName: 'saksham', lastName: 'mishra', email: 'saksham7dev@gmail.com' }
+    client:
+    {
+        email
+        :
+        "yoyo@gmail.com"
+        name
+        :
+        "honey"
+        phone
+        :
+        "9999971017"
+        _id
+        :
+        "6929574e178c6e837a47373b"
+    }
+    [[Prototype]]
+:
+    Object
+    createdAt
+    :
+    "2025-11-28T08:08:45.988Z"
+    messages
+    :
+    Array(1)
+    0
+:
+    createdAt
+    :
+    "2025-11-28T08:08:45.988Z"
+    sender
+    :
+    null
+    senderType
+    :
+    "client"
+    text
+    :
+    "dssdf"
+    updatedAt
+    :
+    "2025-11-28T08:08:45.988Z"
+    _id
+    :
+    "6929588d178c6e837a473756"
+    [[Prototype]]
+:
+    Object
+    length
+    :
+    1
+    [[Prototype]]
+:
+    Array(0)
+    owner
+    :
+    "6925d2363e3bb5a2d849fdc0"
+    status
+    :
+    "open"
+    subject
+    :
+    "New Chat"
+    updatedAt
+    :
+    "2025-11-28T08:08:45.988Z"
+    __v
+    :
+    0
+    _id
+    :
+    "6929588d178c6e837a473755"
+}

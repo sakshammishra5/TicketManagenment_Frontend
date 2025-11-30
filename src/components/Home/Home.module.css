@@ -1,0 +1,330 @@
+.home {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #f5f7fb;
+  color: #111827;
+}
+
+/* NAVBAR */
+.nav {
+  background: #ffffff;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.list {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.navLogo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.navLogo img {
+  height: 28px;
+}
+
+.navButtons {
+  display: flex;
+  gap: 12px;
+}
+
+.loginBtn,
+.signupBtn {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+}
+
+.loginBtn {
+  background: transparent;
+}
+
+.signupBtn {
+  background: #2563eb;
+  color: #ffffff;
+}
+
+/* HERO */
+.heroSection {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 24px 40px;
+}
+
+.heroContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.heroText {
+  flex: 1;
+}
+
+.heroTitle {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.heroSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 420px;
+  margin-bottom: 20px;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.getStartedBtn {
+  background: #1d4ed8;
+  color: #fff;
+  border-radius: 999px;
+  padding: 10px 22px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.watchVideoBtn {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.heroImage {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.heroImage img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+/* LOGO STRIP */
+.companyName {
+  margin-top: 40px;
+  padding: 18px 16px;
+  background: #e5edf9;
+  display: flex;
+  justify-content: space-around;
+  font-size: 14px;
+}
+
+/* FEATURES */
+.featuresSection {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 40px 24px;
+  text-align: center;
+}
+
+.featuresTitle {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.featuresSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.featuresGrid {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.featureItem {
+  text-align: left;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.featureItem h3 {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.featureImage img {
+  width: 100%;
+  max-width: 320px;
+}
+
+/* PRICING */
+.pricingSection {
+  max-width: 1100px;
+  margin: 40px auto 60px;
+  padding: 0 24px;
+  text-align: center;
+}
+
+.pricingTitle {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.pricingSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+  max-width: 560px;
+  margin: 0 auto 28px;
+}
+
+.pricingCards {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.pricingCard {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 24px 24px 28px;
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+}
+
+.planName {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.planDescription {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 16px;
+}
+
+.planPrice {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.planPrice span {
+  font-size: 14px;
+  color: #6b7280;
+  margin-left: 4px;
+}
+
+.planFeaturesTitle {
+  font-size: 14px;
+  margin: 12px 0 6px;
+}
+
+.planFeature {
+  font-size: 13px;
+  color: #4b5563;
+  margin-bottom: 4px;
+}
+
+.planBtn {
+  margin-top: 14px;
+  width: 100%;
+  padding: 10px 0;
+  border-radius: 999px;
+  border: 1px solid #cbd5f5;
+  background: #f9fafb;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* FOOTER */
+.footer {
+  border-top: 1px solid #e5e7eb;
+  background: #ffffff;
+  padding: 32px 24px 40px;
+}
+
+.footerContent {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+}
+
+.footerLogo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.footerLogo img {
+  height: 28px;
+}
+
+.footerLinks {
+  flex: 3;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.footerColumn h4 {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.footerColumn p {
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 4px;
+}
+
+/* SIMPLE RESPONSIVE */
+@media (max-width: 900px) {
+  .heroContent {
+    flex-direction: column;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .footerContent {
+    flex-direction: column;
+  }
+
+  .footerLinks {
+    flex-direction: column;
+  }
+}
