@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Chat.css";
 import { useNavigate, useParams } from "react-router";
+import { Phone,SquareUserRound,Mail,Ticket} from 'lucide-react';
 import {
   getParticularTicket,
   getTicket,
@@ -60,6 +61,7 @@ const Chat = () => {
       try {
         const res = await getTeamMembers();
         // res.data expected to be array of { id, fullName, email, phone, role } as in Team component
+        console.log("team member" ,res.data)
         setTeamMembers(res.data || []);
       } catch (err) {
         console.warn("Failed to load team members", err);
@@ -237,15 +239,15 @@ const Chat = () => {
         <div className="details-section">
           <h4>Details</h4>
           <div className="detail-item">
-            <span className="detail-icon">👤</span>
+            <span className="detail-icon"><SquareUserRound size={18}/></span>
             <span className="detail-text">{chat?.client?.name || "-"}</span>
           </div>
           <div className="detail-item">
-            <span className="detail-icon">📞</span>
+            <span className="detail-icon"><Phone size={18}/></span>
             <span className="detail-text">{chat?.client?.phone || "-"}</span>
           </div>
           <div className="detail-item">
-            <span className="detail-icon">✉️</span>
+            <span className="detail-icon"><Mail size={18}/></span>
             <span className="detail-text">{chat?.client?.email || "-"}</span>
           </div>
         </div>
@@ -253,59 +255,56 @@ const Chat = () => {
         <div className="details-section">
           <h4>Teammates</h4>
 
-          {/* Assigned dropdown */}
-          <div className="teammate-select" style={{ marginBottom: 10 }}>
-            <div className="teammate-item">
-              <div className="teammate-avatar">{getInitials(chat?.assignedTo?.firstName || chat?.assignedTo?.fullName)}</div>
-              <div style={{ marginLeft: 8 }}>
-                <div style={{ fontSize: 13, color: "#333", fontWeight: 600 }}>
-                  {chat?.assignedTo?.firstName ? `${chat.assignedTo.firstName} ${chat.assignedTo.lastName || ""}`.trim() : (chat?.assignedTo?.fullName || "Unassigned")}
-                </div>
-                <div style={{ fontSize: 12, color: "#777" }}>{chat?.assignedTo?.email || ""}</div>
+          {/* choose teammate to assign */}
+          <div style={{ position: "relative", marginBottom: 12 }}>
+            <div style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+              <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#eef3ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                {chat?.assignedTo ? (
+                  <img 
+                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${chat.assignedTo._id}`}
+                    alt="avatar"
+                    style={{ width: "100%", height: "100%", borderRadius: "50%" }}
+                  />
+                ) : (
+                  <span style={{ fontSize: 12, color: "#2f5fb3" }}>—</span>
+                )}
               </div>
             </div>
-            <span className="dropdown-icon">▼</span>
+            <select
+              onChange={(e) => handleAssign(e.target.value)}
+              value={chat?.assignedTo?._id || ""}
+              style={{
+                width: "100%",
+                paddingLeft: 52,
+              }}
+            >
+              <option value="">{chat?.assignedTo ? "Reassign to..." : "Assign to..."}</option>
+              {teamMembers.map((m) => (
+                <option key={m._id} value={m._id}>
+                  {m.firstName} — {m.email}
+                </option>
+              ))}
+            </select>
           </div>
 
-          {/* choose teammate to assign */}
-          <select
-            onChange={(e) => handleAssign(e.target.value)}
-            value={chat?.assignedTo?._id || ""}
-            style={{
-              width: "100%",
-              padding: 10,
-              borderRadius: 8,
-              border: "1px solid #e0e0e0",
-              background: "#fff",
-            }}
-          >
-            <option value="">{chat?.assignedTo ? "Reassign to..." : "Assign to..."} </option>
-            {teamMembers.map((m) => (
-              <option key={m.id} value={m.id}>
-                {m.fullName} — {m.email}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="details-section">
-          <h4>Ticket status</h4>
-
-          <select
-            onChange={(e) => handleChangeStatus(e.target.value)}
-            value={chat?.status || "open"}
-            style={{
-              width: "100%",
-              padding: 10,
-              borderRadius: 8,
-              border: "1px solid #e0e0e0",
-              background: "#fff",
-            }}
-          >
-            <option value="open">Open</option>
-            <option value="pending">Pending</option>
-            <option value="closed">Closed (Resolved)</option>
-          </select>
+          {/* Ticket status select */}
+          <div style={{ position: "relative" }}>
+            <div style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
+              <Ticket size={18} color="#8a92a0" />
+            </div>
+            <select
+              onChange={(e) => handleChangeStatus(e.target.value)}
+              value={chat?.status || "open"}
+              style={{
+                width: "100%",
+                paddingLeft: 52,
+              }}
+            >
+              <option value="open">Open</option>
+              <option value="pending">Pending</option>
+              <option value="closed">Closed (Resolved)</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

@@ -33,8 +33,8 @@ const Dashbaord = () => {
       ticket.client.name.toLowerCase().includes(searchQuery.toLowerCase());
 
     if (activeTab === 'all') return matchesSearch;
-    if (activeTab === 'resolved') return matchesSearch && ticket.status === 'resolved';
-    if (activeTab === 'unresolved') return matchesSearch && ticket.status === 'unresolved';
+    if (activeTab === 'resolved') return matchesSearch && ticket.status === 'closed';
+    if (activeTab === 'unresolved') return matchesSearch && ticket.status === 'pending';
     return matchesSearch;
   });
 

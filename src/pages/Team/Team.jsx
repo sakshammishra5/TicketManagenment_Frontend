@@ -154,9 +154,9 @@ const Team = () => {
                   <td className="sticky-col">
                     <div className="member-cell">
                       <div className="avatar">
-                        <span>{getInitials(m.fullName)}</span>
+                        <span>{getInitials(m.firstName)}</span>
                       </div>
-                      <span>{m.fullName}</span>
+                      <span>{m.firstName}</span>
                     </div>
                   </td>
 

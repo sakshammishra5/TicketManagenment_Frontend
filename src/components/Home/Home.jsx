@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router"; // <-- make sure it's react-router-dom
 import styles from "./Home.module.css";
 import ChatWidget from "../ChatWidget/ChatWidget";
+import { Check } from "lucide-react";
 
 const Home = () => {
     return (
@@ -40,7 +41,7 @@ const Home = () => {
                         <div className={styles.heroButtons}>
                             <button className={styles.getStartedBtn}>Get started</button>
                             <button className={styles.watchVideoBtn}>
-                                <span>▶</span> Watch Video
+                                <img src="./video_logo.svg" alt="" /> Watch Video
                             </button>
                         </div>
                     </div>
@@ -50,15 +51,16 @@ const Home = () => {
                     </div>
                 </div>
 
-                <div className={styles.companyName}>
-                    <p>Adobe</p>
-                    <p>elastic</p>
-                    <p>Opendoor</p>
-                    <p>Airtable</p>
-                    <p>elastic</p>
-                    <p>Framer</p>
-                </div>
             </section>
+                <div className={styles.companyName}>
+                    <img src="./adobe.svg" alt="" srcset="" />
+                    <img src="./elastic.svg" alt="" srcset="" />
+                    <img src="./airtable.svg" alt="" srcset="" />
+                    <img src="./opendoor.svg" alt="" srcset="" />
+                    <img src="./elastic.svg" alt="" srcset="" />
+                    <img src="./adobe.svg" alt="" srcset="" />
+
+                </div>
 
             {/* FEATURES */}
             <section className={styles.featuresSection}>
@@ -124,12 +126,12 @@ const Home = () => {
                             $199<span>/monthly</span>
                         </p>
 
-                        <h3 className={styles.planFeaturesTitle}>What's Included</h3>
-                        <p className={styles.planFeature}>Unlimited Users</p>
-                        <p className={styles.planFeature}>GMB Messaging</p>
-                        <p className={styles.planFeature}>Reputation Management</p>
-                        <p className={styles.planFeature}>GMB Call Tracking</p>
-                        <p className={styles.planFeature}>24/7 Award Winning Support</p>
+                        <h3 className={styles.planFeaturesTitle}>What's included</h3>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Unlimited Users</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Messaging</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Reputation Management</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Call Tracking</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />24/7 Award Winning Support</p>
 
                         <button className={styles.planBtn}>SIGN UP FOR STARTER</button>
                     </div>
@@ -144,16 +146,14 @@ const Home = () => {
                             $399<span>/monthly</span>
                         </p>
 
-                        <h3 className={styles.planFeaturesTitle}>What's Included</h3>
-                        <p className={styles.planFeature}>Pipeline Management</p>
-                        <p className={styles.planFeature}>
-                            Marketing Automation Campaigns
-                        </p>
-                        <p className={styles.planFeature}>Live Call Transfer</p>
-                        <p className={styles.planFeature}>GMB Messaging</p>
-                        <p className={styles.planFeature}>Embed-able Form Builder</p>
-                        <p className={styles.planFeature}>Reputation Management</p>
-                        <p className={styles.planFeature}>24/7 Award Winning Support</p>
+                        <h3 className={styles.planFeaturesTitle}>What's included</h3>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Pipeline Management</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Marketing Automation Campaigns</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Live Call Transfer</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Messaging</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Embed-able Form Builder</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Reputation Management</p>
+                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />24/7 Award Winning Support</p>
 
                         <button className={styles.planBtn}>SIGN UP FOR GROW</button>
                     </div>

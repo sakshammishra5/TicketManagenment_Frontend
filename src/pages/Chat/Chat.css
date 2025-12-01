@@ -309,43 +309,53 @@
 
 /* sections */
 .details-section {
-  padding: 16px 18px;
+  padding: 18px 18px;
   border-bottom: 1px solid #f0f0f0;
 }
 
 .details-section h4 {
-  margin: 0 0 12px 0;
-  font-size: 13px;
+  margin: 0 0 14px 0;
+  font-size: 14px;
   font-weight: 700;
-  color: #666;
+  color: #202124;
 }
 
 /* info cards */
 .detail-item {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px;
-  background-color: #fafafa;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  gap: 14px;
+  padding: 14px 16px;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  border: 1px solid #e8eaed;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.detail-item:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
 }
 
 .detail-item:last-child { margin-bottom: 0; }
 
 .detail-icon {
-  font-size: 16px;
-  width: 28px;
+  font-size: 18px;
+  width: 32px;
   text-align: center;
-  color: #7b8aa0;
+  color: #8a92a0;
+  flex-shrink: 0;
 }
 
 .detail-text {
   font-size: 14px;
-  color: #444;
+  color: #5f6368;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-weight: 500;
 }
 
 /* Teammate / assigned area */
@@ -353,21 +363,30 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 12px;
-  background-color: #fafafa;
-  border-radius: 8px;
-  margin-bottom: 10px;
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.teammate-select:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
 }
 
 .teammate-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex: 1;
 }
 
 .teammate-avatar {
-  width: 34px;
-  height: 34px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background-color: #eef3ff;
   display: flex;
@@ -375,26 +394,41 @@
   justify-content: center;
   font-size: 14px;
   color: #2f5fb3;
+  flex-shrink: 0;
 }
 
 .teammate-name {
-  font-size: 13px;
-  color: #444;
-  font-weight: 600;
+  font-size: 14px;
+  color: #5f6368;
+  font-weight: 500;
 }
 
 /* select inputs styling (native select but prettier) */
 .details-section select,
 .details-section .select-like {
   width: 100%;
-  padding: 10px 12px;
-  border-radius: 8px;
-  border: 1px solid #e6e6e6;
-  background: #fff;
+  padding: 12px 16px;
+  padding-left: 52px;
+  border-radius: 12px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238a92a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
   font-size: 14px;
-  color: #333;
+  color: #5f6368;
   -webkit-appearance: none;
   appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+}
+
+.details-section select:hover,
+.details-section .select-like:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23202124' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
 }
 
 /* a subtle dropdown icon area */
