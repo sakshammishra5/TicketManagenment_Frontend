@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-router"; // <-- make sure it's react-router-dom
+import { Link } from "react-router";
 import styles from "./Home.module.css";
 import ChatWidget from "../ChatWidget/ChatWidget";
 import { Check } from "lucide-react";
@@ -76,29 +75,29 @@ const Home = () => {
                 </p>
 
                 <div className={styles.featuresGrid}>
-                    <div className={styles.featureItem}>
-                        <h3>MULTIPLE PLATFORMS TOGETHER!</h3>
-                        <p>
-                            Email communication is a breeze with our fully integrated, drag &
-                            drop email builder.
-                        </p>
-                    </div>
+                    <div className={styles.featuresLeft}>
+                        <div className={styles.featureItem}>
+                            <h3>MULTIPLE PLATFORMS TOGETHER!</h3>
+                            <p>
+                                Email communication is a breeze with our fully integrated, drag &
+                                drop email builder.
+                            </p>
+                        </div>
 
-                    <div className={styles.featureItem}>
-                        <h3>CLOSE</h3>
-                        <p>
-                            Capture leads using our landing pages, surveys, forms, calendars,
-                            inbound phone system & more!
-                        </p>
-                    </div>
+                        <div className={styles.featureItem}>
+                            <h3>CLOSE</h3>
+                            <p>
+                                Capture leads using our landing pages, surveys, forms, calendars,
+                                inbound phone system & more!
+                            </p>
+                        </div>
 
-                    <div className={styles.featureItem}>
-                        <h3>NURTURE</h3>
-                        <p>
-                            Automatically message new leads via SMS, emails, phone calls, or
-                            even Facebook messages. Create multi-channel campaigns to capture
-                            attention and engage your leads.
-                        </p>
+                        <div className={styles.featureItem}>
+                            <h3>NURTURE</h3>
+                            <p>
+                                Capture leads using our landing pages, surveys, forms, calendars, inbound phone system & more!
+                            </p>
+                        </div>
                     </div>
 
                     <div className={styles.featureImage}>
@@ -127,11 +126,11 @@ const Home = () => {
                         </p>
 
                         <h3 className={styles.planFeaturesTitle}>What's included</h3>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Unlimited Users</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Messaging</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Reputation Management</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Call Tracking</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />24/7 Award Winning Support</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Unlimited Users</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />GMB Messaging</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Reputation Management</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />GMB Call Tracking</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />24/7 Award Winning Support</p>
 
                         <button className={styles.planBtn}>SIGN UP FOR STARTER</button>
                     </div>
@@ -147,13 +146,13 @@ const Home = () => {
                         </p>
 
                         <h3 className={styles.planFeaturesTitle}>What's included</h3>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Pipeline Management</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Marketing Automation Campaigns</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Live Call Transfer</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />GMB Messaging</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Embed-able Form Builder</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />Reputation Management</p>
-                        <p className={styles.planFeature}><Check size={16} style={{display: "inline", marginRight: "8px", color: "#14b8a6", flexShrink: 0}} />24/7 Award Winning Support</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Pipeline Management</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Marketing Automation Campaigns</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Live Call Transfer</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />GMB Messaging</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Embed-able Form Builder</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />Reputation Management</p>
+                        <p className={styles.planFeature}><img style={{display: "inline", marginRight: "8px", flexShrink: 0}} src="./check.svg" alt="" />24/7 Award Winning Support</p>
 
                         <button className={styles.planBtn}>SIGN UP FOR GROW</button>
                     </div>
@@ -164,7 +163,7 @@ const Home = () => {
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
                     <div className={styles.footerLogo}>
-                        <img src="/logo.png" alt="Hubly Logo" />
+                        <img src="/hubly.png" alt="Hubly Logo" />
                         <p>Hubly</p>
                     </div>
 
