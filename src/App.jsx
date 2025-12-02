@@ -11,25 +11,28 @@ import ChatSetting from "./pages/ChatSetting/ChatSetting"
 import Chat from "./pages/Chat/Chat"
 import Team from "./pages/Team/Team"
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"
+import { ChatWidgetProvider } from "./context/ChatWidgetContext"
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path='login' element={<Login />} />
-      <Route path='signup' element={<Signup />} />
+    <ChatWidgetProvider>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path='login' element={<Login />} />
+        <Route path='signup' element={<Signup />} />
 
-      <Route element={<ProtectedRoute />}>
-        <Route path="dashboard" element={<DashboardLayout />}>
-          <Route index element={<Dashbaord />} />
-          <Route path="chat/:chatId" element={<Chat />} />
-          <Route path="chatsetting" element={<ChatSetting />} />
-          <Route path="stats" element={<Stats />} />
-          <Route path="Team" element={<Team />} />
-          <Route path="settings" element={<Settings />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="dashboard" element={<DashboardLayout />}>
+            <Route index element={<Dashbaord />} />
+            <Route path="chat/:chatId" element={<Chat />} />
+            <Route path="chatsetting" element={<ChatSetting />} />
+            <Route path="stats" element={<Stats />} />
+            <Route path="Team" element={<Team />} />
+            <Route path="settings" element={<Settings />} />
+          </Route>
         </Route>
-      </Route>
-    </Routes>
+      </Routes>
+    </ChatWidgetProvider>
   )
 }
 

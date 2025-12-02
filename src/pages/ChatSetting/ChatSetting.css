@@ -130,15 +130,21 @@ body {
 }
 
 .intro-btn {
-  margin-top: 12px;
+  margin-top: 16px;
   display: inline-block;
-  padding: 9px 22px;
-  border-radius: 25px;
+  padding: 12px 28px;
+  border-radius: 20px;
   border: none;
-  background: #0a3a68;
+  background: #1e40af;
   color: #ffffff;
-  font-size: 13px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.intro-btn:hover {
+  background: #1d3a8a;
 }
 
 .intro-btn.full-width {
@@ -215,15 +221,16 @@ body {
 
 .settings-card {
   background: #ffffff;
-  border-radius: 18px;
-  padding: 16px 18px 18px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  padding: 20px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .settings-title {
-  font-size: 13px;
-  font-weight: 600;
-  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: #111827;
 }
 
 /* Colour pickers */
@@ -236,40 +243,45 @@ body {
 }
 
 .color-swatch {
-  width: 32px;
-  height: 32px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid #ddd;
+  border: 2px solid #e5e7eb;
   cursor: pointer;
   outline: none;
+  transition: all 0.2s ease;
 }
 
 .color-swatch--active {
-  box-shadow: 0 0 0 3px rgba(51, 71, 91, 0.45);
+  box-shadow: 0 0 0 3px rgba(51, 71, 91, 0.2);
+  border-color: #33475b;
 }
 
 .color-input-wrapper {
   display: flex;
   align-items: center;
-  padding: 7px 10px;
-  border-radius: 10px;
-  background: #f7f7f7;
-  min-width: 140px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  min-width: 160px;
+  border: 1px solid #e5e7eb;
 }
 
 .color-preview {
-  width: 24px;
-  height: 24px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  margin-right: 8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  margin-right: 10px;
 }
 
 .color-input {
   border: none;
   background: transparent;
-  font-size: 12px;
+  font-size: 14px;
   outline: none;
+  color: #111827;
+  font-weight: 500;
 }
 
 /* Editable text rows */
@@ -277,33 +289,41 @@ body {
 .editable-row {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
-  padding: 6px 10px;
-  border-radius: 10px;
-  background: #f7f7f7;
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
 }
 
 .editable-input {
   flex: 1;
   border: none;
   background: transparent;
-  font-size: 13px;
+  font-size: 14px;
   outline: none;
+  color: #111827;
 }
 
 .edit-icon {
-  font-size: 13px;
-  opacity: 0.5;
+  font-size: 14px;
+  opacity: 0.6;
+  margin-left: 8px;
 }
 
 /* Intro form preview in settings */
 
 .intro-form-preview .intro-label {
-  margin-bottom: 10px;
+  margin-bottom: 12px;
+  font-size: 12px;
+  color: #6b7280;
+  font-weight: 500;
 }
 
 .intro-form-preview .intro-input {
-  font-size: 12px;
+  font-size: 14px;
+  border-bottom: 1px solid #e5e7eb;
+  color: #111827;
 }
 
 /* Welcome message settings */
@@ -316,26 +336,28 @@ body {
 
 .welcome-textarea {
   flex: 1;
-  min-height: 70px;
+  min-height: 80px;
   resize: none;
   border-radius: 12px;
-  border: 1px solid #e1e1e1;
-  padding: 10px 34px 10px 10px;
-  font-size: 13px;
+  border: 1px solid #e5e7eb;
+  padding: 12px 40px 12px 14px;
+  font-size: 14px;
   outline: none;
+  background: #f3f4f6;
+  color: #6b7280;
 }
 
 .welcome-row .edit-icon {
   position: absolute;
-  right: 10px;
-  bottom: 10px;
+  right: 14px;
+  bottom: 14px;
 }
 
 .char-count {
-  margin-top: 4px;
-  font-size: 11px;
+  margin-top: 6px;
+  font-size: 12px;
   text-align: right;
-  color: #999;
+  color: #9ca3af;
 }
 
 /* Missed chat timer */
@@ -343,45 +365,56 @@ body {
 .timer-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 12px;
 }
 
 .timer-column {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
 }
 
 .timer-label {
-  font-size: 10px;
-  color: #999;
-  margin-bottom: 2px;
+  font-size: 11px;
+  color: #9ca3af;
+  margin-bottom: 0;
 }
 
 .timer-select {
-  padding: 4px 6px;
-  border-radius: 6px;
-  border: 1px solid #ddd;
-  font-size: 12px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  font-size: 14px;
   outline: none;
-  background: #f7f7f7;
+  background: #f3f4f6;
+  color: #111827;
+  min-width: 50px;
+  text-align: center;
+  font-weight: 500;
 }
 
 .timer-separator {
-  font-size: 18px;
-  margin: 0 2px;
-  color: #555;
+  font-size: 20px;
+  margin: 0 4px;
+  color: #d1d5db;
 }
 
 .timer-save {
   margin-left: auto;
-  padding: 6px 16px;
-  border-radius: 16px;
+  padding: 8px 20px;
+  border-radius: 20px;
   border: none;
-  background: #0a3a68;
+  background: #1e40af;
   color: #ffffff;
-  font-size: 12px;
+  font-size: 14px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.timer-save:hover {
+  background: #1d3a8a;
 }
 
 /* Responsive */

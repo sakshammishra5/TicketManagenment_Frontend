@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import "./ChatWidget.css";
 import { createTicket } from "../../../services/api";
+import { useChatWidgetContext } from "../../context/ChatWidgetContext";
 
 const ChatWidget = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [showWelcome, setShowWelcome] = useState(true);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [ticketId, setTicketId] = useState(null);
+
+    const {
+        headerColor,
+        bgColor,
+        message1,
+        message2,
+        welcomeMessage,
+    } = useChatWidgetContext();
 
     const [form, setForm] = useState({
         name: "",
@@ -63,7 +72,9 @@ const ChatWidget = () => {
                 <div className="chat-widget-welcome">
                     <div className="chat-widget-avatar-circle">
                         {/* You can replace this text with an <img /> */}
-                        <span className="chat-widget-avatar-emoji">🤖</span>
+                        <span className="chat-widget-avatar-emoji">
+                            <img src="./robot.svg" alt="" />
+                        </span>
                     </div>
                     <button
                         className="chat-widget-welcome-close"
@@ -72,8 +83,7 @@ const ChatWidget = () => {
                         ×
                     </button>
                     <p className="chat-widget-welcome-text">
-                        👋 Want to chat about Hubly? I'm a chatbot here to help you find
-                        your way.
+                        {welcomeMessage}
                     </p>
                 </div>
             )}
@@ -87,7 +97,7 @@ const ChatWidget = () => {
             {isOpen && (
                 <div className="chat-widget-window">
                     {/* Header */}
-                    <div className="chat-widget-header">
+                    <div className="chat-widget-header" style={{ backgroundColor: headerColor }}>
                         <div className="chat-widget-header-left">
                             <div className="chat-widget-avatar-circle header-avatar">
                                 <span className="chat-widget-avatar-emoji">🤖</span>
@@ -103,10 +113,13 @@ const ChatWidget = () => {
                     </div>
 
                     {/* Chat body */}
-                    <div className="chat-widget-body">
+                    <div className="chat-widget-body" style={{ backgroundColor: bgColor }}>
                         {/* Example initial bot message */}
                         <div className="chat-widget-bubble bot">
-                            <span>Hey!</span>
+                            <span>{message1}</span>
+                        </div>
+                        <div className="chat-widget-bubble bot">
+                            <span>{message2}</span>
                         </div>
 
                         {/* Intro form card */}

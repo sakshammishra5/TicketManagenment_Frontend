@@ -273,7 +273,7 @@
 .chat-details {
   width: 360px;
   min-width: 300px;
-  background-color: #ffffff;
+  background-color: #FAFBFC;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
@@ -325,11 +325,12 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 14px 16px;
-  background-color: #f8f9fa;
+  padding: 5px 16px;
+  background-color: #FFFFFF;
+  color: #808080;
   border-radius: 12px;
   margin-bottom: 12px;
-  border: 1px solid #e8eaed;
+  border: 1px solid #D1D6DA;
   cursor: pointer;
   transition: all 0.2s ease;
 }

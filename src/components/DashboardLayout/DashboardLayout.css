@@ -3,17 +3,21 @@
   height: 100vh;
 }
 
+.sidebar-wrapper{
+  border-right: 1px solid #d0d5d9;
+}
+
 /* Sidebar */
 .sidebar {
   width: 94px;
   height: 410px;
-  background: #fafbfc;
+  /* background: #fafbfc; */
   color: #424242;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-right: 2px solid #c4c8cc;
+  /* border-right: 2px solid #c4c8cc; */
 }
 
 
@@ -32,6 +36,6 @@
 /* Main content area */
 .content-area {
   flex-grow: 1;
-  padding: 20px;
+  /* padding: 20px; */
   background: #f4f4f7;
 }

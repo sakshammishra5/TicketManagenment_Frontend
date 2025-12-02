@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./ChatSetting.css";
+import { useChatWidgetContext } from "../../context/ChatWidgetContext";
 
 const HEADER_COLORS = ["#ffffff", "#000000", "#33475B"];
 const BG_COLORS = ["#ffffff", "#000000", "#EEEEEE"];
 
 const ChatSetting = () => {
-  const [headerColor, setHeaderColor] = useState("#33475B");
-  const [bgColor, setBgColor] = useState("#EEEEEE");
-  const [message1, setMessage1] = useState("How can i help you?");
-  const [message2, setMessage2] = useState("Ask me anything!");
-  const [welcomeMessage, setWelcomeMessage] = useState(
-    "👋 Want to chat about Hubly? I'm an chatbot here to help you find your way."
-  );
+  const {
+    headerColor,
+    setHeaderColor,
+    bgColor,
+    setBgColor,
+    message1,
+    setMessage1,
+    message2,
+    setMessage2,
+    welcomeMessage,
+    setWelcomeMessage,
+  } = useChatWidgetContext();
 
   return (
     <div className="chatbot-page">
