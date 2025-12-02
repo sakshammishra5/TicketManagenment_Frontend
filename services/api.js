@@ -1,8 +1,8 @@
 import axios from "axios";
 // http://localhost:5000
-// 
+// https://ticketmanagenment-backend.onrender.com
 const API = axios.create({
-  baseURL: "https://ticketmanagenment-backend.onrender.com",
+  baseURL: "http://localhost:5000",
   headers: {
     "Content-Type": "application/json",
   },
