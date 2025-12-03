@@ -224,6 +224,25 @@
   word-break: break-word;
 }
 
+/* Resolved and no-access messages */
+.resolved-message {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 20px 0;
+  background: transparent;
+}
+
+.no-access-message {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
+  font-size: 14px;
+  margin: 20px 0;
+  background: transparent;
+}
+
 /* input area */
 .chat-input-container {
   padding: 12px 16px;
@@ -249,6 +268,12 @@
   box-shadow: 0 2px 8px rgba(74,144,226,0.08);
 }
 
+.chat-input:disabled {
+  background-color: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
 .chat-input::placeholder {
   color: #bcbfc5;
 }
@@ -265,7 +290,15 @@
   cursor: pointer;
   color: #3a536f;
 }
-.send-btn:hover { background: #e9f0ff; }
+
+.send-btn:hover:not(:disabled) { 
+  background: #e9f0ff; 
+}
+
+.send-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
 /* --------------------
    Right Sidebar - details

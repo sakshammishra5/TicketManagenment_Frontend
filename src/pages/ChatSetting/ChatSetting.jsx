@@ -29,14 +29,16 @@ const ChatSetting = () => {
             style={{ backgroundColor: headerColor }}
           >
             <div className="chatbot-logo">
-              <span className="bot-eye" />
+              <img src={`${import.meta.env.BASE_URL}robot.svg`} alt="robot" />
             </div>
             <span className="chatbot-title">Hubly</span>
           </div>
 
           <div className="chatbot-body" style={{ backgroundColor: bgColor }}>
             <div className="chatbot-messages">
-              <div className="bot-avatar" />
+              <div className="bot-avatar">
+                <img src={`${import.meta.env.BASE_URL}robot.svg`} alt="robot" />
+              </div>
               <div className="bot-bubbles">
                 <div className="bot-bubble">{message1}</div>
                 <div className="bot-bubble">{message2}</div>
@@ -81,7 +83,9 @@ const ChatSetting = () => {
 
         {/* floating welcome popup */}
         <div className="welcome-popup">
-          <div className="popup-avatar" />
+          <div className="popup-avatar">
+            <img src={`${import.meta.env.BASE_URL}robot.svg`} alt="robot" />
+          </div>
           <div className="popup-content">
             {welcomeMessage}
           </div>

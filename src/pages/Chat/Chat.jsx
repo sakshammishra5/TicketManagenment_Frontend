@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Chat.css";
 import { useNavigate, useParams } from "react-router";
 import { Phone,SquareUserRound,Mail,Ticket} from 'lucide-react';
+import { getUserIdFromToken } from '../../utils/auth';
 import {
   getParticularTicket,
   getTicket,
@@ -20,6 +21,7 @@ const Chat = () => {
   const [teamMembers, setTeamMembers] = useState([]); // teammates list for dropdown
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const currentUserId = getUserIdFromToken();
 
   // load ticket list
   useEffect(() => {
@@ -55,6 +57,7 @@ const Chat = () => {
     fetch();
   }, [chatId]);
 
+  console.log(chat)
   // load teammates for dropdown (simple)
   useEffect(() => {
     const fetchMembers = async () => {
@@ -200,13 +203,25 @@ const Chat = () => {
 
               {chat.messages?.map((msg) => (
                 <div key={msg._id} className="message">
-                  <div className="message-avatar">{getInitials(msg.sender || msg.firstName)}</div>
+                  <div className="message-avatar">{getInitials(chat.client.name || msg.firstName)}</div>
                   <div className="message-content">
                     <div className="message-sender">{msg.sender || (msg.fromName || "Chat")}</div>
                     <div className="message-text">{msg.text}</div>
                   </div>
                 </div>
               ))}
+
+              {chat.status === "closed" && (
+                <div className="resolved-message">
+                  This chat has been resolved
+                </div>
+              )}
+
+              {chat.assignedTo && chat.assignedTo._id !== currentUserId && (
+                <div className="no-access-message">
+                  This chat is assigned to new team member. you no longer have access
+                </div>
+              )}
             </>
           ) : (
             <div style={{ padding: 24, color: "#777" }}>Select a chat from the left to view messages</div>
@@ -220,8 +235,19 @@ const Chat = () => {
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             className="chat-input"
+            disabled={chat?.status === "closed" || (chat?.assignedTo && chat.assignedTo._id !== currentUserId)}
+            onKeyPress={(e) => {
+              if (e.key === 'Enter' && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
           />
-          <button className="send-btn" onClick={handleSend}>
+          <button 
+            className="send-btn" 
+            onClick={handleSend}
+            disabled={chat?.status === "closed" || (chat?.assignedTo && chat.assignedTo._id !== currentUserId)}
+          >
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
               <path d="M18 2L9 11M18 2L12 18L9 11M18 2L2 8L9 11" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
             </svg>
@@ -233,7 +259,7 @@ const Chat = () => {
       <div className="chat-details">
         <div className="details-header">
           <div className="user-avatar-large">{getInitials(chat?.client?.name)}</div>
-          <span className="user-name">Chat</span>
+          <span className="user-name">{chat?.client?.name || "Client"}</span>
         </div>
 
         <div className="details-section">
