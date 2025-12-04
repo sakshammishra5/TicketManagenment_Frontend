@@ -3,6 +3,7 @@ import './Dashbaord.css';
 import { getTicket } from '../../../services/api';
 import { parse, format } from 'date-and-time';
 import { NavLink } from 'react-router';
+import { Mail } from 'lucide-react';
 
 const Dashbaord = () => {
   const [activeTab, setActiveTab] = useState('all');
@@ -79,9 +80,7 @@ const Dashbaord = () => {
           className={`tab ${activeTab === 'all' ? 'active' : ''}`}
           onClick={() => setActiveTab('all')}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="tab-icon">
-            <path d="M2 4h16M2 10h16M2 16h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          </svg>
+          <Mail size={20} className="tab-icon" />
           All Tickets
         </button>
         <button
@@ -102,25 +101,25 @@ const Dashbaord = () => {
       <div className="tickets-list">
         {filteredTickets.map((ticket) => (
           <div key={ticket._id} className="ticket-card">
-            <div className="ticket-header">
-              <div className="ticket-info">
+            <div className="ticket-card-content">
+              {/* Left Section - Ticket Info */}
+              <div className="ticket-left">
                 <div className="ticket-avatar"></div>
-                <div>
+                <div className="ticket-details">
                   <h3 className="ticket-id">Ticket# {ticket._id}</h3>
                   <p className="ticket-message">{ticket.messages[0].text}</p>
                 </div>
               </div>
-              <div className="ticket-meta">
-                <span className="ticket-posted">{format(
-                  parse(ticket.createdAt, "YYYY-MM-DDTHH:mm:ss.SSSZ"),
-                  "hh:mmA"
-                )}</span>
-                <span className="ticket-time">{format(
-                  parse(ticket.createdAt, "YYYY-MM-DDTHH:mm:ss.SSSZ"), "hh:mmA")}</span>
+
+              {/* Middle Section - Time */}
+              <div className="ticket-time-section">
+                <span className="ticket-posted">Posted at {new Date(ticket.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true })}</span>
+                <span className="ticket-time">{new Date(ticket.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })}</span>
               </div>
             </div>
 
-            <div className="ticket-footer">
+            {/* Bottom Section - User Info and Button */}
+            <div className="ticket-bottom">
               <div className="user-info">
                 <img src={`https://ui-avatars.com/api/?name=${ticket.client.name}&background=FFA500&color=fff`} alt={ticket.client.name} className="user-avatar" />
                 <div className="user-details">
@@ -129,7 +128,7 @@ const Dashbaord = () => {
                   <p className="user-contact">{ticket.client.email}</p>
                 </div>
               </div>
-              <NavLink to={`chat/${ticket._id}`}>
+              <NavLink to={`chat/${ticket._id}`} className="open-ticket-link">
                 <button className="open-ticket-btn">Open Ticket</button>
               </NavLink>
             </div>

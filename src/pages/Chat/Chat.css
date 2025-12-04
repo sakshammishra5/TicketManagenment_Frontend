@@ -186,6 +186,21 @@
   display: flex;
   gap: 12px;
   align-items: flex-start;
+  margin-bottom: 16px;
+}
+
+.message.client-msg {
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.message.admin-msg {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+.message.admin-msg .message-content {
+  align-items: flex-end;
 }
 
 .message-avatar {
@@ -204,6 +219,8 @@
 .message-content {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 .message-sender {
@@ -213,15 +230,26 @@
   margin-bottom: 6px;
 }
 
+.message.admin-msg .message-sender {
+  text-align: right;
+}
+
 .message-text {
   font-size: 14px;
-  color: #333;
+  color: #6b7280;
   line-height: 1.45;
-  background: #fafafa;
-  padding: 12px;
+  background: transparent;
+  padding: 0;
   border-radius: 10px;
   max-width: 85%;
   word-break: break-word;
+}
+
+.message.admin-msg .message-text {
+  background: transparent;
+  color: #6b7280;
+  text-decoration: none;
+  padding: 0;
 }
 
 /* Resolved and no-access messages */
@@ -349,8 +377,8 @@
 .details-section h4 {
   margin: 0 0 14px 0;
   font-size: 14px;
-  font-weight: 700;
-  color: #202124;
+  /* font-weight: 700; */
+  color: #184E7F;
 }
 
 /* info cards */
@@ -456,6 +484,189 @@
   cursor: pointer;
   transition: all 0.2s ease;
   font-weight: 500;
+}
+
+.details-select {
+  width: 100%;
+  padding: 12px 16px;
+  padding-left: 52px;
+  border-radius: 12px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238a92a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  font-size: 14px;
+  color: #5f6368;
+  -webkit-appearance: none;
+  appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.details-select:last-child {
+  margin-bottom: 0;
+}
+
+.details-select:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
+}
+
+.details-select:focus {
+  outline: none;
+  border-color: #2f5fb3;
+  box-shadow: 0 0 0 3px rgba(47, 95, 179, 0.1);
+}
+
+.details-select option {
+  padding: 12px 16px;
+  background: #ffffff;
+  color: #5f6368;
+  border: 1px solid #e8eaed;
+  margin: 0;
+  border-radius: 12px;
+  font-size: 14px;
+}
+
+.details-select option:hover {
+  background: #f0f2f5;
+}
+
+.details-select option:checked {
+  background: linear-gradient(#2f5fb3, #2f5fb3);
+  background-color: #2f5fb3;
+  color: #ffffff;
+}
+
+/* Custom dropdown button */
+.details-select-button {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%238a92a0' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  margin-bottom: 12px;
+  text-align: left;
+}
+
+.details-select-button:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
+}
+
+.details-select-button:focus {
+  outline: none;
+  border-color: #2f5fb3;
+  box-shadow: 0 0 0 3px rgba(47, 95, 179, 0.1);
+}
+
+/* Custom dropdown menu */
+.custom-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+  margin-top: -12px;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.custom-dropdown-option {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #e8eaed;
+}
+
+.custom-dropdown-option:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown-option:hover {
+  background: #f0f2f5;
+  color: #2f5fb3;
+}
+
+/* Teammates button */
+.teammates-button {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e8eaed;
+  background: #f8f9fa;
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  margin-bottom: 12px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.teammates-button:hover {
+  background-color: #f0f2f5;
+  border-color: #d0d5dd;
+}
+
+.teammates-button:focus {
+  outline: none;
+  border-color: #2f5fb3;
+  box-shadow: 0 0 0 3px rgba(47, 95, 179, 0.1);
+}
+
+/* Custom dropdown menu for teammates */
+.custom-dropdown-team {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e8eaed;
+  border-radius: 12px;
+  margin-top: 8px;
+  z-index: 1000;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.custom-dropdown-team-option {
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #5f6368;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid #e8eaed;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.custom-dropdown-team-option:last-child {
+  border-bottom: none;
+}
+
+.custom-dropdown-team-option:hover {
+  background: #f0f2f5;
+  color: #2f5fb3;
 }
 
 .details-section select:hover,

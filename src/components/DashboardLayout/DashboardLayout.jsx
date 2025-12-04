@@ -14,7 +14,7 @@ const DashboardLayout = () => {
             <div className='dashbaord-container'>
                 <div className='sidebar-wrapper'>
                     <aside className='sidebar'>
-                        <NavLink to="/" className="link"><img src="./logo.svg" alt="" /></NavLink>
+                        <NavLink to="/" className="link"><img src="/logo.svg" alt="Hubly Logo" /></NavLink>
                         <NavLink style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }} to="/dashboard" className="link">
                             <IoHomeOutline /> Dashboard
                         </NavLink>

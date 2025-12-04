@@ -78,13 +78,18 @@
 }
 
 .tab.active {
-  color: #4a90e2;
-  border-bottom-color: #4a90e2;
+  color: #184E7F;
+  border-bottom-color: #184E7F;
+}
+
+.tab.active .tab-icon {
+  color: #184E7F;
 }
 
 .tab-icon {
   width: 18px;
   height: 18px;
+  color: inherit;
 }
 
 /* Tickets List */
@@ -98,7 +103,7 @@
   background: #fff;
   border: 1px solid #e0e0e0;
   border-radius: 12px;
-  padding: 20px;
+  padding: 24px;
   transition: box-shadow 0.3s;
 }
 
@@ -106,34 +111,41 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
 }
 
-.ticket-header {
+.ticket-card-content {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 20px;
-  padding-bottom: 20px;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 24px;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.ticket-info {
+.ticket-left {
   display: flex;
-  gap: 15px;
+  gap: 16px;
   align-items: flex-start;
+  flex: 1;
 }
 
 .ticket-avatar {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   background: linear-gradient(135deg, #ffa500 0%, #ff8c00 100%);
   flex-shrink: 0;
+}
+
+.ticket-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .ticket-id {
   font-size: 16px;
   font-weight: 600;
   color: #333;
-  margin: 0 0 8px 0;
+  margin: 0;
 }
 
 .ticket-message {
@@ -142,11 +154,12 @@
   margin: 0;
 }
 
-.ticket-meta {
+.ticket-time-section {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
+  margin-left: 30px;
 }
 
 .ticket-posted {
@@ -160,8 +173,7 @@
   color: #333;
 }
 
-/* Ticket Footer */
-.ticket-footer {
+.ticket-bottom {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -200,20 +212,25 @@
 }
 
 .open-ticket-btn {
-  padding: 10px 24px;
-  background-color: #fff;
-  color: #4a90e2;
-  border: 1px solid #4a90e2;
-  border-radius: 6px;
-  font-size: 14px;
+  padding: 0;
+  background: none;
+  color: #1e40af;
+  border: none;
+  border-bottom: 2px solid #1e40af;
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s;
 }
 
 .open-ticket-btn:hover {
-  background-color: #4a90e2;
-  color: #fff;
+  background-color: transparent;
+  color: #1d3a8a;
+  border-bottom-color: #1d3a8a;
+}
+
+.open-ticket-link {
+  text-decoration: none;
 }
 
 /* No Tickets */

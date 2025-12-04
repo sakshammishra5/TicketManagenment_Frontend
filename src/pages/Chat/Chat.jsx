@@ -21,6 +21,8 @@ const Chat = () => {
   const [teamMembers, setTeamMembers] = useState([]); // teammates list for dropdown
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [statusDropdownOpen, setStatusDropdownOpen] = useState(false);
+  const [teamDropdownOpen, setTeamDropdownOpen] = useState(false);
   const currentUserId = getUserIdFromToken();
 
   // load ticket list
@@ -201,15 +203,28 @@ const Chat = () => {
                 {new Date(chat.createdAt).toLocaleDateString()}
               </div>
 
-              {chat.messages?.map((msg) => (
-                <div key={msg._id} className="message">
-                  <div className="message-avatar">{getInitials(chat.client.name || msg.firstName)}</div>
-                  <div className="message-content">
-                    <div className="message-sender">{msg.sender || (msg.fromName || "Chat")}</div>
-                    <div className="message-text">{msg.text}</div>
+              {chat.messages?.map((msg) => {
+                // Get sender name - for admin messages, try to find from teamMembers or use sender field
+                const getSenderName = () => {
+                  if (msg.senderType === 'client') {
+                    return chat.client.name;
+                  } else {
+                    // For admin messages, find the team member name or use sender
+                    const teamMember = teamMembers.find(m => m._id === msg.sender);
+                    return teamMember ? `${teamMember.firstName} ${teamMember.lastName || ''}`.trim() : (msg.sender || "Support");
+                  }
+                };
+                
+                return (
+                  <div key={msg._id} className={`message ${msg.senderType === 'client' ? 'client-msg' : 'admin-msg'}`}>
+                    <div className="message-avatar">{msg.senderType === 'client' ? getInitials(chat.client.name) : getInitials(getSenderName())}</div>
+                    <div className="message-content">
+                      <div className="message-sender">{getSenderName()}</div>
+                      <div className="message-text">{msg.text}</div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {chat.status === "closed" && (
                 <div className="resolved-message">
@@ -283,53 +298,82 @@ const Chat = () => {
 
           {/* choose teammate to assign */}
           <div style={{ position: "relative", marginBottom: 12 }}>
-            <div style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
-              <div style={{ width: 28, height: 28, borderRadius: "50%", background: "#eef3ff", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                {chat?.assignedTo ? (
-                  <img 
-                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${chat.assignedTo._id}`}
-                    alt="avatar"
-                    style={{ width: "100%", height: "100%", borderRadius: "50%" }}
-                  />
-                ) : (
-                  <span style={{ fontSize: 12, color: "#2f5fb3" }}>—</span>
-                )}
-              </div>
-            </div>
-            <select
-              onChange={(e) => handleAssign(e.target.value)}
-              value={chat?.assignedTo?._id || ""}
-              style={{
-                width: "100%",
-                paddingLeft: 52,
-              }}
+            <button
+              onClick={() => setTeamDropdownOpen(!teamDropdownOpen)}
+              className="teammates-button"
             >
-              <option value="">{chat?.assignedTo ? "Reassign to..." : "Assign to..."}</option>
-              {teamMembers.map((m) => (
-                <option key={m._id} value={m._id}>
-                  {m.firstName} — {m.email}
-                </option>
-              ))}
-            </select>
+              <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+                <div style={{ width: 32, height: 32, borderRadius: "50%", overflow: "hidden", flexShrink: 0 }}>
+                  {chat?.assignedTo ? (
+                    <img 
+                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${chat.assignedTo._id}`}
+                      alt="avatar"
+                      style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    />
+                  ) : (
+                    <div style={{ width: "100%", height: "100%", background: "#eef3ff", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 12, color: "#2f5fb3" }}>—</div>
+                  )}
+                </div>
+                <span>{chat?.assignedTo ? chat.assignedTo.firstName || "Assigned" : "Select teammate"}</span>
+              </div>
+            </button>
+            {teamDropdownOpen && (
+              <div className="custom-dropdown-team">
+                {teamMembers.map((m) => (
+                  <div
+                    key={m._id}
+                    className="custom-dropdown-team-option"
+                    onClick={() => {
+                      handleAssign(m._id);
+                      setTeamDropdownOpen(false);
+                    }}
+                  >
+                    <img 
+                      src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${m._id}`}
+                      alt={m.firstName}
+                      style={{ width: 32, height: 32, borderRadius: "50%", objectFit: "cover" }}
+                    />
+                    <span>{m.firstName}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Ticket status select */}
-          <div style={{ position: "relative" }}>
+          <div style={{ position: "relative", marginTop: 12 }}>
             <div style={{ position: "absolute", left: 16, top: "50%", transform: "translateY(-50%)", pointerEvents: "none" }}>
               <Ticket size={18} color="#8a92a0" />
             </div>
-            <select
-              onChange={(e) => handleChangeStatus(e.target.value)}
-              value={chat?.status || "open"}
-              style={{
-                width: "100%",
-                paddingLeft: 52,
-              }}
+            <button
+              onClick={() => setStatusDropdownOpen(!statusDropdownOpen)}
+              className="details-select-button"
+              style={{ paddingLeft: 52 }}
             >
-              <option value="open">Open</option>
-              <option value="pending">Pending</option>
-              <option value="closed">Closed (Resolved)</option>
-            </select>
+              Ticket Status: {chat?.status === "closed" ? "Resolved" : "Unresolved"}
+            </button>
+            {statusDropdownOpen && (
+              <div className="custom-dropdown">
+                <div
+                  className="custom-dropdown-option"
+                  onClick={() => {
+                    handleChangeStatus("open");
+                    setStatusDropdownOpen(false);
+                  }}
+                >
+                  Unresolved
+                </div>
+                <div
+                  className="custom-dropdown-option"
+                  onClick={() => {
+                    handleChangeStatus("closed");
+                    setStatusDropdownOpen(false);
+                  }}
+                >
+                  Resolved
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>

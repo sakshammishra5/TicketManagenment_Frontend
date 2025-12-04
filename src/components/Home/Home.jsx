@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import styles from "./Home.module.css";
 import ChatWidget from "../ChatWidget/ChatWidget";
-import { Check } from "lucide-react";
+import { Check, Mail, Linkedin, Twitter, Youtube, Users, Slack, Instagram } from "lucide-react";
 
 const Home = () => {
     return (
@@ -162,24 +162,26 @@ const Home = () => {
             {/* FOOTER */}
             <footer className={styles.footer}>
                 <div className={styles.footerContent}>
-                    <div className={styles.footerLogo}>
-                        <img src="/hubly.png" alt="Hubly Logo" />
-                        <p>Hubly</p>
+                    <div className={styles.footerLogoSection}>
+                        <div className={styles.footerLogo}>
+                            <img src="/hubly.png" alt="Hubly Logo" />
+                            <p>Hubly</p>
+                        </div>
                     </div>
 
                     <div className={styles.footerLinks}>
                         <div className={styles.footerColumn}>
                             <h4>Product</h4>
-                            <p>Live Chat widget</p>
-                            <p>Payment and eStore</p>
+                            <p>Universal checkout</p>
+                            <p>Payment workflows</p>
                             <p>Observability</p>
-                            <p>HelpBot</p>
+                            <p>UpliftAI</p>
                             <p>Apps & Integrations</p>
                         </div>
 
                         <div className={styles.footerColumn}>
                             <h4>Why Primer</h4>
-                            <p>Switch from helpdesk</p>
+                            <p>Expand to new markets</p>
                             <p>Boost payment success</p>
                             <p>Improve conversion rates</p>
                             <p>Reduce payments fraud</p>
@@ -194,6 +196,44 @@ const Home = () => {
                             <p>Service status</p>
                             <p>Community</p>
                         </div>
+
+                        <div className={styles.footerColumn}>
+                            <h4>Resources</h4>
+                            <p>Blog</p>
+                            <p>Success stories</p>
+                            <p>News room</p>
+                            <p>Terms</p>
+                            <p>Privacy</p>
+                        </div>
+
+                        <div className={styles.footerColumn}>
+                            <h4>Company</h4>
+                            <p>Careers</p>
+                        </div>
+                    </div>
+
+                    <div className={styles.footerSocial}>
+                        <a href="#" className={styles.socialIcon} title="Email">
+                            <Mail size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="LinkedIn">
+                            <Linkedin size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="Twitter">
+                            <Twitter size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="YouTube">
+                            <Youtube size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="Slack">
+                            <Slack size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="Users">
+                            <Users size={18} />
+                        </a>
+                        <a href="#" className={styles.socialIcon} title="Instagram">
+                            <Instagram size={18} />
+                        </a>
                     </div>
                 </div>
             </footer>
