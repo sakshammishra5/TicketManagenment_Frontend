@@ -24,11 +24,18 @@ const Team = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState(null);
 
+  // normalize member so we always have `id`
+  const normalizeMember = (m) => ({
+    ...m,
+    id: m.id || m._id, // use _id if id not present
+  });
+
   useEffect(() => {
     const fetchMembers = async () => {
       try {
         const res = await getTeamMembers();
-        const list = res.data || [];
+        const raw = res.data || [];
+        const list = raw.map(normalizeMember);
         setMembers(list);
       } catch (err) {
         console.error("Failed to load members", err);
@@ -46,7 +53,7 @@ const Team = () => {
   const openEditModal = (member) => {
     setIsEditMode(true);
     setFormData({
-      id: member.id,
+      id: member.id, // now always defined because of normalizeMember
       name: member.firstName || member.fullName || "",
       email: member.email || "",
       phone: member.phone || "",
@@ -65,6 +72,7 @@ const Team = () => {
 
   const handleSave = async (e) => {
     e.preventDefault();
+
     const payload = {
       username: formData.name,
       email: formData.email,
@@ -75,12 +83,14 @@ const Team = () => {
     try {
       if (isEditMode) {
         const res = await updateMember(formData.id, payload);
+        const updated = normalizeMember(res.data);
         setMembers((prev) =>
-          prev.map((m) => (m.id === formData.id ? res.data : m))
+          prev.map((m) => (m.id === formData.id ? updated : m))
         );
       } else {
         const res = await addTeamMember(payload);
-        setMembers((prev) => [...prev, res.data]);
+        const created = normalizeMember(res.data);
+        setMembers((prev) => [...prev, created]);
       }
       closeFormModal();
     } catch (err) {
@@ -100,7 +110,7 @@ const Team = () => {
 
   const confirmDelete = async () => {
     try {
-      await deleteMember(memberToDelete.id);
+      await deleteMember(memberToDelete.id); // now id is defined
       setMembers((prev) => prev.filter((m) => m.id !== memberToDelete.id));
       closeDeleteModal();
     } catch (err) {
@@ -147,8 +157,8 @@ const Team = () => {
                   <td>
                     <div className="member-cell">
                       <img
-                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${m._id}`}
-                        alt={m.firstName || "Member"}
+                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${m.id}`}
+                        alt={m.firstName || m.fullName || "Member"}
                         className="avatar"
                       />
                       <span className="member-name">

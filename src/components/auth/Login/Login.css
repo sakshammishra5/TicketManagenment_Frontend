@@ -88,3 +88,40 @@
   height: 100%;
   object-fit: cover;
 }
+
+
+.login-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* disabled state */
+.login-btn[disabled] {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+/* small spinner in button */
+.login-spinner {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-top-color: #ffffff;
+  animation: login-spin 0.7s linear infinite;
+}
+
+/* just to keep layout from jumping when text changes */
+.login-btn--loading {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+@keyframes login-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

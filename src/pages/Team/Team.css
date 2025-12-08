@@ -1,61 +1,49 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  background: #f8f9fa;
-}
-
-/* PAGE */
+/* TEAM PAGE ROOT */
 .team-page {
-  padding: 0;
   background: #ffffff;
-  min-height: 100vh;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
+  padding: 0 32px 32px 32px;
 }
 
+/* HEADER */
 .team-header-row {
   display: flex;
   align-items: center;
-  padding: 20px 24px 16px 24px;
+  padding: 20px 0 12px 0;
 }
 
 .team-title {
   margin: 0;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 400;
   color: #5f6368;
-  letter-spacing: 0;
 }
 
-/* Divider line */
+/* TOP DIVIDER (the grey line under "Team") */
 .team-divider {
-  margin: 0;
   border: none;
   border-bottom: 1px solid #dadce0;
+  margin: 0;
+}
+
+/* TABLE WRAPPER */
+.team-table-wrapper {
+  flex: 1;
+  overflow-x: auto;
 }
 
 /* TABLE */
-.team-table-wrapper {
-  margin: 0;
-  border: none;
-  overflow-x: auto;
-  flex: 1;
-}
-
 .team-table {
   width: 100%;
   border-collapse: collapse;
   font-size: 14px;
 }
 
+/* HEADER ROW */
 .team-table thead {
-  background: #ffffff;
+  background-color: #ffffff;
 }
 
 .team-table th {
@@ -65,10 +53,10 @@ body {
   border-bottom: 1px solid #dadce0;
   font-weight: 500;
   font-size: 13px;
-  color: #1967d2;
-  background: #ffffff;
+  color: #184e7e; /* << Figma blue */
 }
 
+/* BODY ROWS */
 .team-table td {
   padding: 12px 24px;
   text-align: left;
@@ -79,16 +67,26 @@ body {
 }
 
 .team-table tbody tr:hover {
-  background: #f8f9fa;
+  background-color: #f8f9fa;
 }
 
+/* sort indicator next to "Full Name" */
 .sort-arrow {
   margin-left: 4px;
   font-size: 10px;
-  opacity: 0.6;
-  color: #1967d2;
+  opacity: 0.75;
+  color: #184e7e;
 }
 
+/* --- GROUPING: text columns vs actions --- */
+/* Full Name, Phone, Email, role = one group */
+/* Give extra right padding to role column to visually separate from icons */
+.team-table th:nth-child(4),
+.team-table td:nth-child(4) {
+  padding-right: 90px; /* creates big gap before icons group */
+}
+
+/* FULL NAME CELL: avatar + text */
 .member-cell {
   display: flex;
   align-items: center;
@@ -103,14 +101,21 @@ body {
   flex-shrink: 0;
 }
 
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .member-name {
   font-size: 14px;
   color: #202124;
   font-weight: 400;
 }
 
+/* ACTIONS COLUMN (edit / delete = second group) */
 .actions-col {
-  width: 80px;
+  width: 90px;
   text-align: right;
   padding-right: 24px !important;
 }
@@ -122,10 +127,10 @@ body {
   margin-left: 12px;
   padding: 4px;
   color: #5f6368;
-  transition: color 0.15s ease;
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  transition: color 0.15s ease;
 }
 
 .icon-btn:first-child {
@@ -136,6 +141,7 @@ body {
   color: #202124;
 }
 
+/* "No members" row */
 .empty-row {
   text-align: center;
   padding: 48px 24px;
@@ -143,39 +149,36 @@ body {
   font-size: 14px;
 }
 
-/* FOOTER + ADD BUTTON */
+/* FOOTER WITH ADD BUTTON (BOTTOM RIGHT) */
 .team-footer {
   display: flex;
   justify-content: flex-end;
-  padding: 16px 24px 20px;
-  background: #ffffff;
+  padding: 16px 0 0 0;
 }
 
+/* ADD BUTTON */
 .add-btn {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 8px 16px;
+  padding: 10px 18px;
   border-radius: 4px;
   border: none;
-  background: #1967d2;
+  background: #184e7e; /* same blue family */
   color: #ffffff;
   font-size: 13px;
   cursor: pointer;
   font-weight: 500;
-  transition: background 0.2s ease;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
   letter-spacing: 0.25px;
 }
 
 .add-btn:hover {
-  background: #1557b0;
-  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-}
-
-.add-btn:active {
-  background: #185abc;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  background: #123a60;
+  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3),
+    0 4px 8px 3px rgba(60, 64, 67, 0.15);
 }
 
 .add-btn-icon {
@@ -186,35 +189,36 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0;
-  margin: 0;
 }
 
-/* MODALS */
+/* MODAL OVERLAY */
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 50;
+  z-index: 100;
 }
 
+/* MODAL CARD */
 .modal-card {
-  width: 500px;
+  width: 520px;
   max-width: 90vw;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 24px;
-  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12),
+    0 5px 5px -3px rgba(0, 0, 0, 0.2);
 }
 
 .modal-card--small {
-  width: 380px;
-  padding: 24px;
+  width: 400px;
 }
 
+/* MODAL HEADER */
 .modal-header h3 {
   margin: 0 0 8px;
   font-size: 18px;
@@ -222,6 +226,7 @@ body {
   color: #202124;
 }
 
+/* MODAL SUBTITLE */
 .modal-subtitle {
   margin: 0 0 20px;
   font-size: 13px;
@@ -229,6 +234,7 @@ body {
   line-height: 1.5;
 }
 
+/* FORM INSIDE MODAL */
 .modal-form {
   display: flex;
   flex-direction: column;
@@ -240,7 +246,6 @@ body {
   font-size: 12px;
   color: #5f6368;
   font-weight: 500;
-  margin-bottom: 0;
 }
 
 .modal-input,
@@ -269,11 +274,12 @@ body {
 
 .modal-input:focus,
 .modal-select:focus {
-  border-color: #1967d2;
+  border-color: #184e7e;
   border-width: 2px;
   padding: 7px 11px;
 }
 
+/* MODAL FOOTER BUTTONS */
 .modal-footer {
   margin-top: 24px;
   display: flex;
@@ -292,16 +298,14 @@ body {
   border: 1px solid #dadce0;
   background: #ffffff;
   font-size: 13px;
-  color: #1967d2;
+  color: #184e7e;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.15s ease;
-  letter-spacing: 0.25px;
 }
 
 .btn-cancel:hover {
   background: #f8f9fa;
-  border-color: #d2d3d4;
 }
 
 .btn-primary {
@@ -309,24 +313,18 @@ body {
   padding: 8px 16px;
   border-radius: 4px;
   border: none;
-  background: #1967d2;
+  background: #184e7e;
   color: #ffffff;
   font-size: 13px;
   cursor: pointer;
   font-weight: 500;
   transition: all 0.15s ease;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
-  letter-spacing: 0.25px;
+  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
+    0 1px 3px 1px rgba(60, 64, 67, 0.15);
 }
 
 .btn-primary:hover {
-  background: #1557b0;
-  box-shadow: 0 1px 3px 0 rgba(60, 64, 67, 0.3), 0 4px 8px 3px rgba(60, 64, 67, 0.15);
-}
-
-.btn-primary:active {
-  background: #185abc;
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3), 0 1px 3px 1px rgba(60, 64, 67, 0.15);
+  background: #123a60;
 }
 
 .delete-text {
@@ -336,45 +334,14 @@ body {
   color: #5f6368;
 }
 
-/* Responsive */
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .team-header-row {
-    padding: 16px;
+  .team-page {
+    padding: 0 16px 24px 16px;
   }
 
   .team-table th,
   .team-table td {
-    padding: 12px 16px;
-  }
-
-  .team-footer {
-    padding: 16px;
-  }
-
-  .modal-card {
-    padding: 20px;
-  }
-
-  .modal-card--small {
-    padding: 24px 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .team-title {
-    font-size: 16px;
-  }
-
-  .add-btn {
-    font-size: 13px;
-    padding: 8px 14px;
-  }
-  
-  .actions-col {
-    width: 70px;
-  }
-  
-  .icon-btn {
-    margin-left: 8px;
+    padding: 10px 16px;
   }
 }
