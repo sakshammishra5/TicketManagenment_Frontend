@@ -45,3 +45,4 @@ export const addTeamMember = (data) => API.post("/team/addMember", data);
 export const updateMember = (memberId, data) => API.put(`/team/updatemember/${memberId}`, data)
 export const deleteMember = (memberId, data) => API.delete(`/team/deletemember/${memberId}`, data)
 
+export const getDashboardMetrics = (params) => API.get("/analytics/dashboard", { params });

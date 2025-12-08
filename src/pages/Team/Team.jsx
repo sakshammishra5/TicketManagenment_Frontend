@@ -6,13 +6,14 @@ import {
   updateMember,
   deleteMember,
 } from "../../../services/api";
+import { Edit2, Trash2, Plus } from "lucide-react";
 
 const emptyForm = {
   id: null,
   name: "",
   email: "",
   phone: "",
-  role: "User",
+  role: "Member",
 };
 
 const Team = () => {
@@ -23,7 +24,6 @@ const Team = () => {
   const [isEditMode, setIsEditMode] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState(null);
 
-  // Fetch members on load
   useEffect(() => {
     const fetchMembers = async () => {
       try {
@@ -37,7 +37,6 @@ const Team = () => {
     fetchMembers();
   }, []);
 
-  // Helpers
   const openAddModal = () => {
     setIsEditMode(false);
     setFormData(emptyForm);
@@ -48,10 +47,10 @@ const Team = () => {
     setIsEditMode(true);
     setFormData({
       id: member.id,
-      name: member.fullName,
-      email: member.email,
-      phone: member.phone,
-      role: member.role,
+      name: member.firstName || member.fullName || "",
+      email: member.email || "",
+      phone: member.phone || "",
+      role: member.role || "Member",
     });
     setShowFormModal(true);
   };
@@ -83,14 +82,12 @@ const Team = () => {
         const res = await addTeamMember(payload);
         setMembers((prev) => [...prev, res.data]);
       }
-
       closeFormModal();
     } catch (err) {
       console.log("Save error:", err);
     }
   };
 
-  // Delete
   const openDeleteModal = (member) => {
     setMemberToDelete(member);
     setShowDeleteModal(true);
@@ -111,29 +108,25 @@ const Team = () => {
     }
   };
 
-  const getInitials = (name = "") => {
-    const parts = name.split(" ");
-    return (parts[0]?.[0] || "") + (parts[1]?.[0] || "");
-  };
-
   return (
     <div className="team-page">
-
+      {/* Header */}
       <div className="team-header-row">
         <h2 className="team-title">Team</h2>
-
-        <button className="add-btn" onClick={openAddModal}>
-          <span className="add-btn-icon">●</span>
-          Add Team members
-        </button>
       </div>
 
-      {/* TABLE */}
+      {/* Divider */}
+      <div className="team-divider" />
+
+      {/* Table */}
       <div className="team-table-wrapper">
         <table className="team-table">
           <thead>
             <tr>
-              <th className="sticky-col">Full Name</th>
+              <th>
+                Full Name
+                <span className="sort-arrow">▾</span>
+              </th>
               <th>Phone</th>
               <th>Email</th>
               <th>role</th>
@@ -151,33 +144,42 @@ const Team = () => {
             ) : (
               members.map((m) => (
                 <tr key={m.id}>
-                  <td className="sticky-col">
+                  <td>
                     <div className="member-cell">
-                      <div className="avatar">
-                        <span>{getInitials(m.firstName)}</span>
-                      </div>
-                      <span>{m.firstName}</span>
+                      <img
+                        src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${m._id}`}
+                        alt={m.firstName || "Member"}
+                        className="avatar"
+                      />
+                      <span className="member-name">
+                        {m.firstName || m.fullName || "Unknown"}
+                      </span>
                     </div>
                   </td>
-
-                  <td>{m.phone}</td>
-                  <td>{m.email}</td>
-                  <td>{m.role}</td>
-
+                  <td>{m.phone || "—"}</td>
+                  <td>{m.email || "—"}</td>
+                  <td>{m.role || "Member"}</td>
                   <td className="actions-col">
-                    <button
-                      className="icon-btn"
-                      onClick={() => openEditModal(m)}
-                    >
-                      ✏️
-                    </button>
-
-                    <button
-                      className="icon-btn"
-                      onClick={() => openDeleteModal(m)}
-                    >
-                      🗑
-                    </button>
+                    {m.role !== "Admin" && (
+                      <>
+                        <button
+                          className="icon-btn"
+                          onClick={() => openEditModal(m)}
+                          title="Edit"
+                          aria-label="Edit member"
+                        >
+                          <Edit2 size={18} />
+                        </button>
+                        <button
+                          className="icon-btn"
+                          onClick={() => openDeleteModal(m)}
+                          title="Delete"
+                          aria-label="Delete member"
+                        >
+                          <Trash2 size={18} />
+                        </button>
+                      </>
+                    )}
                   </td>
                 </tr>
               ))
@@ -186,11 +188,20 @@ const Team = () => {
         </table>
       </div>
 
+      {/* Add Button */}
+      <div className="team-footer">
+        <button className="add-btn" onClick={openAddModal}>
+          <span className="add-btn-icon">
+            <Plus size={16} strokeWidth={2.5} />
+          </span>
+          <span>Add Team members</span>
+        </button>
+      </div>
+
       {/* ADD/EDIT MODAL */}
       {showFormModal && (
-        <div className="modal-overlay">
-          <div className="modal-card">
-
+        <div className="modal-overlay" onClick={closeFormModal}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>{isEditMode ? "Edit Member" : "Add Team members"}</h3>
             </div>
@@ -202,28 +213,29 @@ const Team = () => {
             </p>
 
             <form onSubmit={handleSave} className="modal-form">
-
               <label className="modal-label">
-                User name
+                Full name
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleFormChange}
                   className="modal-input"
-                  placeholder="User name"
+                  placeholder="Full name"
+                  required
                 />
               </label>
 
               <label className="modal-label">
-                Email ID
+                Email
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleFormChange}
                   className="modal-input"
-                  placeholder="Email ID"
+                  placeholder="example@gmail.com"
+                  required
                 />
               </label>
 
@@ -240,7 +252,7 @@ const Team = () => {
               </label>
 
               <label className="modal-label">
-                Designation
+                Role
                 <select
                   name="role"
                   value={formData.role}
@@ -248,19 +260,22 @@ const Team = () => {
                   className="modal-select"
                 >
                   <option value="Admin">Admin</option>
-                  <option value="User">User</option>
+                  <option value="Member">Member</option>
                 </select>
               </label>
 
               <div className="modal-footer">
-                <button type="button" className="btn-cancel" onClick={closeFormModal}>
+                <button
+                  type="button"
+                  className="btn-cancel"
+                  onClick={closeFormModal}
+                >
                   Cancel
                 </button>
                 <button type="submit" className="btn-primary">
                   Save
                 </button>
               </div>
-
             </form>
           </div>
         </div>
@@ -268,9 +283,11 @@ const Team = () => {
 
       {/* DELETE MODAL */}
       {showDeleteModal && (
-        <div className="modal-overlay">
-          <div className="modal-card modal-card--small">
-
+        <div className="modal-overlay" onClick={closeDeleteModal}>
+          <div
+            className="modal-card modal-card--small"
+            onClick={(e) => e.stopPropagation()}
+          >
             <p className="delete-text">This teammate will be deleted.</p>
 
             <div className="modal-footer modal-footer--center">
@@ -282,11 +299,9 @@ const Team = () => {
                 Confirm
               </button>
             </div>
-
           </div>
         </div>
       )}
-
     </div>
   );
 };
