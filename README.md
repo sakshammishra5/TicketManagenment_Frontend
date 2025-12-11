@@ -1,16 +1,39 @@
-# React + Vite
+Login & Signup Instructions
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project includes a simple authentication system with predefined login credentials and a signup flow where the user's firstname becomes their username.
 
-Currently, two official plugins are available:
+🔐 Default Login Credentials
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+You can use the following credentials to log in as a test user:
 
-## React Compiler
+Username: saksham
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Password: 123
 
-## Expanding the ESLint configuration
+📝 Signup Rules
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+When a new user signs up:
+
+The firstname entered during registration will automatically be used as the username.
+
+The user must provide all required fields (firstname, email, password, etc. depending on your form).
+
+After successful signup, the user can log in using:
+
+Username: firstname they entered
+
+Password: password they created
+
+📌 Example
+
+If a user signs up with:
+
+Firstname: Rahul
+
+Password: rahul@123
+
+Then their login credentials will be:
+
+Username: Rahul
+
+Password: rahul@123
